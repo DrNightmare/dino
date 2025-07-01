@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1d3ihv0b81wm"]
+
+[ext_resource type="Script" path="res://scenes/cactus.gd" id="1_fmgjs"]
+[ext_resource type="PackedScene" uid="uid://jju6s4ur2636" path="res://scenes/obstacle.tscn" id="1_g5gfr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_grits"]
+radius = 6.75
+height = 21.0
+
+[node name="Obstacle" instance=ExtResource("1_g5gfr")]
+script = ExtResource("1_fmgjs")
+SPEED = 200
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-0.25, -0.5)
+shape = SubResource("CapsuleShape2D_grits")

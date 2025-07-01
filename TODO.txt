@@ -1,0 +1,11 @@
+Character that can jump
+End on collideCharacter that can jump
+Obstacle that move toward the left
+Obstacle disappears after going out of bounds
+Obstacle spawner
+Allow restart
+Randomness in bird height
+Speed up over time
+Ducking
+
+Score

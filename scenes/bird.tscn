@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://fn6sfjy3c6w2"]
+
+[ext_resource type="PackedScene" uid="uid://jju6s4ur2636" path="res://scenes/obstacle.tscn" id="1_hanuf"]
+[ext_resource type="Script" path="res://scenes/bird.gd" id="2_khknw"]
+[ext_resource type="Texture2D" uid="uid://55u23n3547wq" path="res://assets/bird.png" id="2_wltqx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6skt"]
+resource_local_to_scene = true
+size = Vector2(19.3333, 9.66667)
+
+[node name="Obstacle" instance=ExtResource("1_hanuf")]
+script = ExtResource("2_khknw")
+SPEED = 200
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_wltqx")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-0.333333, 0.5)
+shape = SubResource("RectangleShape2D_q6skt")

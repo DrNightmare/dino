@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgfyw8lvjkrwb"]
+
+[ext_resource type="PackedScene" uid="uid://cg5mrtdwi3mt" path="res://scenes/dino.tscn" id="1_al6k0"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_iinss"]
+[ext_resource type="PackedScene" uid="uid://or6aig3evft4" path="res://scenes/floor.tscn" id="2_8epg4"]
+[ext_resource type="PackedScene" uid="uid://c1d3ihv0b81wm" path="res://scenes/cactus.tscn" id="3_x0ln4"]
+[ext_resource type="PackedScene" uid="uid://b7amam00luyrx" path="res://scenes/obstacle_spawner.tscn" id="4_k56a4"]
+[ext_resource type="PackedScene" uid="uid://fn6sfjy3c6w2" path="res://scenes/bird.tscn" id="4_kq8rq"]
+[ext_resource type="PackedScene" uid="uid://rr83ms8pajym" path="res://scenes/menu.tscn" id="7_3s4a3"]
+[ext_resource type="Script" path="res://scenes/score_label.gd" id="8_pcyfc"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_iinss")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1943.0
+offset_bottom = 831.0
+color = Color(0.398322, 0.364285, 0.330279, 1)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_al6k0")]
+position = Vector2(485, 481)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_8epg4")]
+position = Vector2(-19, 633)
+
+[node name="ColorRect" parent="StaticBody2D" index="0"]
+color = Color(0.243515, 0.218142, 0.197326, 1)
+
+[node name="Obstacles" type="Node" parent="."]
+
+[node name="ObstacleSpawner" parent="." node_paths=PackedStringArray("obstacles_parent") instance=ExtResource("4_k56a4")]
+position = Vector2(944, 653)
+obstacles_parent = NodePath("../Obstacles")
+possible_obstacles = Array[PackedScene]([ExtResource("4_kq8rq"), ExtResource("3_x0ln4")])
+
+[node name="Menu" parent="." instance=ExtResource("7_3s4a3")]
+visible = false
+z_index = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 902.0
+offset_top = 404.0
+offset_right = 902.0
+offset_bottom = 404.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 913.0
+offset_top = 36.0
+offset_right = 1004.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0.184933, 0.165809, 0.146682, 1)
+theme_override_font_sizes/font_size = 40
+text = "1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_pcyfc")
+
+[editable path="StaticBody2D"]
